@@ -14,6 +14,6 @@
         Topmost="True">
     <Grid Background="#555555">
         <Image Name="ClipboardImage" Margin="0, 0, 0, 0" Visibility="Collapsed" Source="{Binding ClipboardImageContent}"/>
-        <TextBox Name="ClipboardText" Margin="0, 0, 0, 0" TextWrapping="Wrap" Text="{Binding ClipboardTextContent, UpdateSourceTrigger=Explicit}"/>
+        <TextBox Name="ClipboardText" Margin="0, 0, 0, 0" TextWrapping="Wrap" IsReadOnly="True" Text="{Binding ClipboardTextContent}"/>
     </Grid>
 </Window>

@@ -5,6 +5,8 @@ using System.Windows.Input;
 
 namespace KlipViewer
 {
+    // Shamelessly stolen from Dylan's Blog:
+    // http://www.dylansweb.com/2014/10/low-level-global-keyboard-hook-sink-in-c-net/
     public class LowLevelKeyboardListener
     {
         private const int WH_KEYBOARD_LL = 13;
