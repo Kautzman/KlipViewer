@@ -61,7 +61,6 @@ namespace KlipViewer
             {
                 this.Activate();
                 mainWindow.Visibility = (mainWindow.Visibility == Visibility.Visible) ? Visibility.Collapsed : Visibility.Visible;
-                EvaluateClipboardData();
             }
             else if(e.KeyPressed.ToString().ToLower() == "escape")
             {
@@ -71,11 +70,13 @@ namespace KlipViewer
                 ClipboardTextContent = "";
             }
             
-            if(mainWindow.Visibility == Visibility.Visible && (e.KeyPressed.ToString().ToLower() == "c" || e.KeyPressed.ToString().ToLower() == "snapshot"))
+            if(mainWindow.Visibility == Visibility.Visible && (e.KeyPressed.ToString().ToLower() == "c" || e.KeyPressed.ToString().ToLower() == "snapshot" || e.KeyPressed.ToString().ToLower() == "scroll"))
             {
                 // If you don't wait for the clipboard to actually write, EvaluteClipboardData can accidently capture the 'previous' state, thus await 25ms.
                 await Task.Delay(25);
                 EvaluateClipboardData();
+                GC.Collect(); // One of the few times forcing collect seems to be a good idea*. (famous last words).
+                // TODO:  Understand why GC.Collect() works here and find out why it's actually my fault that the memory footprint explodes on visibility toggles.
             }
         }
 

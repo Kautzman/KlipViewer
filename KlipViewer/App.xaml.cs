@@ -14,14 +14,13 @@ namespace KlipViewer
             _notifyIcon = new System.Windows.Forms.NotifyIcon();
             _notifyIcon.Icon = KlipViewer.Properties.Resources.iKon;
             _notifyIcon.Visible = true;
+            CreateContextMenu();
 
             if (Process.GetProcessesByName("KlipViewer").Length > 1)
             {
                 MessageBox.Show("KlipViewer is already running! (Toggle with Scroll Lock)");
                 ExitApplication();
             }
-
-            CreateContextMenu();
         }
 
         private void CreateContextMenu()
